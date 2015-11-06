@@ -216,12 +216,36 @@ stats_html_content = """
       margin-right: auto;
       display: block;
     }}
+    #instructions{{
+        font-size: 30px;
+        margin: 5px;
+        font-weight: bold;
+    }}
+    #subinstructions{{
+        margin: 5px;
+        text-align: right;
+    }}
   </style>
 <body>
   <header>
     <img class='centerImage' src="images/gimmequotes.png"/>
   </header>
   <div id="container">
+    <div id="instructions">
+        Welcome to GimmeQuotes...
+        <div id="subinstructions">
+            <table style="width: 100%; border: None;">
+            <tr>
+            <td style="width: 100%; border: None; font-size: 14px;"></td>
+            <td style="white-space: nowrap; border: None; font-size: 14px;">
+                <p> send 'SUBSCRIBE 2' to 6502295612 to receive a quote every 2 minutes </p>
+                <p> To modify subscription, send 'SUBSCRIBE 5' to 6502295612 to receive a quote every 5 minutes </p>
+                <p> send 'UNSUBSCRIBE' to 6502295612 to unsubscribe </p>
+             </td>
+             </tr>
+            </table>
+        </div>
+    </div>
     <div>
       <h1>User Status</h1>
       {table_users}
@@ -236,6 +260,14 @@ stats_html_content = """
       <h2>Message log (most recent 50)</h2>
       {table_sent_messages}
     </div>
+
+    <div style="width: 100%; text-align:center; font-size: 14px;">
+        <br/>
+        <hr/>
+        <br/>
+        <br/>
+        <p>&copy; Prabhavathi Matta</p>
+      </div>
   </div>
 </body>
 </html>
