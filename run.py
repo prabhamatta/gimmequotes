@@ -251,10 +251,11 @@ def get_stats_result():
         users_table += "    <th>%s</th>\n" % th
     users_table += "  </tr>\n"
     for number, info in msgs_data.items():
-        number = hide_number(number)
         users_table += "  <tr>\n"
-        for td in [number, get_status(users_data, number),
+        new_number = hide_number(number)
+        for td in [new_number, get_status(users_data, number),
                    users_data.get(number, {}).get('frequency', '???'), info[2]]:
+
             users_table += "    <td>%s</td>\n" % td
         users_table += "  </tr>\n"
     users_table += "</table>\n"
@@ -269,9 +270,9 @@ def get_stats_result():
         for row in reversed(list(reader)[-50:]):
             number, tm, index = row
             ctm = time.ctime(float(tm))
-            number = hide_number(number)
+            new_number = hide_number(number)
             sent_msgs_table += "  <tr>\n"
-            for td in [number, ctm, index]:
+            for td in [new_number, ctm, index]:
                 sent_msgs_table += "    <td>%s</td>\n" % td
             sent_msgs_table += "  </tr>\n"
     sent_msgs_table += "</table>"
