@@ -67,9 +67,13 @@ def get_last_msg_index_and_time(number, msgs_data):
 def send_message(number, msg_index):
     msg = all_quotes[msg_index % NUM_QUOTES]
     msg = "%s\n    - %s" % (msg[1], msg[0])
-    print "*"*60
-    print "Sending message\n%s\nto number : %s\n" % (msg, number)
-    send_sms(number , msg)
+    try:
+        send_sms(number , msg)
+        print "*"*60
+        print "Sending message\n%s\nto number : %s\n" % (msg, number)
+    except:
+        print "Exception while sending a quote to %s" %(number)
+
 
 def run_periodically():
     """
