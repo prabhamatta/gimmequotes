@@ -252,12 +252,14 @@ stats_html_content = """
     </div>
 
     <div>
-      <h1>User activity log (most recent 50)</h1>
+        <br/><br/>
+      <h1>User activity log (most recent 10)</h1>
       {table_user_activity_log}
     </div>
 
     <div>
-      <h2>Message log (most recent 50)</h2>
+        <br/><br/>
+      <h1>Message log (most recent 10)</h1>
       {table_sent_messages}
     </div>
 
@@ -299,7 +301,7 @@ def get_stats_result():
     sent_msgs_table += "  </tr>\n"
     with open('sent_msgs.log', 'r') as sm:
         reader = csv.reader(sm)
-        for row in reversed(list(reader)[-50:]):
+        for row in reversed(list(reader)[-10:]):
             number, tm, index = row
             ctm = time.ctime(float(tm))
             new_number = hide_number(number)
@@ -316,7 +318,7 @@ def get_stats_result():
     user_activity_table += "  </tr>\n"
     with open('user_activity.log', 'r') as ua:
         reader = csv.reader(ua)
-        for row in reversed(list(reader)[-50:]):
+        for row in reversed(list(reader)[-10:]):
             number, msg, freq, body, tm = row
             number = hide_number(number)
             ctm = time.ctime(float(tm))
