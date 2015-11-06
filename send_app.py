@@ -65,9 +65,9 @@ def get_last_msg_index_and_time(number, msgs_data):
     return msg_time, msg_index, msg_count
 
 def send_message(number, msg_index):
-    msg = all_quotes[msg_index % NUM_QUOTES]
-    msg = "%s\n    - %s" % (msg[1], msg[0])
     try:
+        msg = all_quotes[msg_index % NUM_QUOTES]
+        msg = "%s\n    - %s" % (msg[1], msg[0])
         send_sms(number , msg)
         print "*"*60
         print "Sending message\n%s\nto number : %s\n" % (msg, number)
