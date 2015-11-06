@@ -113,7 +113,7 @@ def get_request_info(form):
         elif len(msg_body) == 1:
             if msg_body[0].upper() == "TERMINATE":
                 msg = "TERMINATE"
-                freq = 60
+                freq = 0
     except:
         try:
             number = form.get('From', None)
