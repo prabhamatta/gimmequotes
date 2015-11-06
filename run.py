@@ -10,7 +10,7 @@ import csv
 PRODUCTION = True
 
 BAD_REQUEST = "Sorry... we did not understand the request. Acceptable requests: \
-'SUBSCRIBE K' - subscibe to a quote every K minutes, or 'TERMINATE' - to unsubscribe"
+'Subscribe K' - subscibe to a quote every K minutes, or 'Terminate' - to unsubscribe"
 NEW_SUBS_MSG = "Welcome to GimmeQuotes. Your subscription was successful. You will \
 receive a quote every %s minutes."
 CHANGE_FREQ_MSG = "Your subscription was modified. You will \
@@ -19,7 +19,7 @@ SUBSCRIBE_AGAIN_MSG = "We are glad to see you back. You will \
 receive a quote every %s minutes."
 NEVER_SUBS = "Unsubscribe not required. Could not find a subscription for your number."
 UNSUBS_MSG = "Successfully Unsubscribed. We are sad to see you go. You can always \
-subscribe again by sending 'SUBSCRIBE K' to %s"
+subscribe again by sending 'Subscribe K' to %s"
 ALREADY_UNSUBS = "Your number is already unsubscribed. You will not receive any more \
 quotes."
 
@@ -31,7 +31,7 @@ def send_from_images(path):
     return send_from_directory('images', path)
 
 
-@app.route("/incoming_sms", methods=['Post'])
+@app.route(incoming_mesgs_url, methods=['Post'])
 def read_incoming_sms():
     number, msg, freq, body = get_request_info(request.form)
 
