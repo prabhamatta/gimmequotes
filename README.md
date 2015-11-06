@@ -4,7 +4,9 @@ Step1:
 ```
 twilio_account_sid = "<twilio account id>"
 twilio_auth_token = "<twilio auth token>"
-twilio_number = “<twilio ph number>"
+twilio_number = "<twilio ph number>"
+incoming_mesgs_url = "<incoming mesg url>"
+
 ```
 
 Step 2: How to run the app that handles subscription and unsubscription
