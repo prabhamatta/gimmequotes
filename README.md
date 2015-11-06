@@ -1,28 +1,42 @@
 Step1:
-create ‘settings.py’ file with following info:
+------
+##### Create ‘settings.py’ file with following info:
+```
 twilio_account_sid = "<twilio account id>"
 twilio_auth_token = "<twilio auth token>"
 twilio_number = “<twilio ph number>"
+```
 
-Step 2:
+Step 2: How to run the app that handles subscription and unsubscription
 ----------
-How to run:
-1. create virtual env
+* create virtual env
+```
 virtualenv venv
-2. activating virtual env
+```
+* activating virtual env
+```
 source env.sh
-3. install dependencies
+```
+* install dependencies
+```
 pip install -r requirements.txt
-4. for testing, set
+```
+* set
+```
+# for testing
 PRODUCTION = false
-for running in production (sending mesgs), set
+# for running in production
 PRODUCTION = True
-5.Now, run the application (handles subscription and unsubscription)
+```
+* Now, run the application
+```
 python run.py
+```
 
-Step 3:
+Step 3:  How to run the app that handles periodic sending of quotes
 ---------
-For running send app (handles periodic sending of quotes)
-1. go to the folder and run
+* go to the folder and run
+```
 source env.sh
-2. python send_app.py
+python send_app.py
+```
