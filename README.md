@@ -1,3 +1,7 @@
+
+## An SMS App using Twilio's api to periodically send quotes to subscribers
+http://gimmequotes.info/
+
 Step1:
 ------
 ##### Create ‘settings.py’ file with following info:
