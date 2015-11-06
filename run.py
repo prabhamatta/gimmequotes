@@ -238,9 +238,9 @@ stats_html_content = """
             <tr>
             <td style="width: 100%; border: None; font-size: 14px;"></td>
             <td style="white-space: nowrap; border: None; font-size: 14px;">
-                <p> send 'Subscribe 2' to 6502295612 to receive a quote every 2 minutes </p>
-                <p> To modify subscription, send 'Subscribe 5' to 6502295612 to receive a quote every 5 minutes </p>
-                <p> send 'Terminate' to 6502295612 to unsubscribe </p>
+                <p> Send 'Subscribe 2' to 6502295612 to receive a quote every 2 minutes </p>
+                <p> To modify subscription, send 'Subscribe 5' to receive a quote every 5 minutes </p>
+                <p> Send 'Terminate' to 6502295612 to unsubscribe </p>
              </td>
              </tr>
             </table>
