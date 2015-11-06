@@ -33,6 +33,9 @@ PRODUCTION = True
 * Now, run the application
 ```
 python run.py
+
+# To run in the background
+nohup python run.py &
 ```
 
 Step 3:  How to run the app that handles periodic sending of quotes
@@ -40,5 +43,10 @@ Step 3:  How to run the app that handles periodic sending of quotes
 * go to the folder and run
 ```
 source env.sh
+
+# To run the application
 python send_app.py
+
+#To run in the background
+nohup python send_app.py &
 ```
