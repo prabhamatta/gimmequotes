@@ -92,6 +92,8 @@ def send_sms(number, msg):
         print "Dummy sending sms to: %s\n%s\n" % (number, msg)
     return "Message Sent to Client"
 
+def hide_number(number):
+    return "..." + number[-4:]
 
 def get_request_info(form):
     """
@@ -249,6 +251,7 @@ def get_stats_result():
         users_table += "    <th>%s</th>\n" % th
     users_table += "  </tr>\n"
     for number, info in msgs_data.items():
+        number = hide_number(number)
         users_table += "  <tr>\n"
         for td in [number, get_status(users_data, number),
                    users_data.get(number, {}).get('frequency', '???'), info[2]]:
@@ -266,7 +269,7 @@ def get_stats_result():
         for row in reversed(list(reader)[-50:]):
             number, tm, index = row
             ctm = time.ctime(float(tm))
-
+            number = hide_number(number)
             sent_msgs_table += "  <tr>\n"
             for td in [number, ctm, index]:
                 sent_msgs_table += "    <td>%s</td>\n" % td
@@ -282,8 +285,8 @@ def get_stats_result():
         reader = csv.reader(ua)
         for row in reversed(list(reader)[-50:]):
             number, msg, freq, body, tm = row
+            number = hide_number(number)
             ctm = time.ctime(float(tm))
-
             user_activity_table += "  <tr>\n"
             for dt in [number, msg, freq, body, ctm]:
                 user_activity_table += "    <td>%s</td>\n" % dt
