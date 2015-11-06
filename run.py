@@ -8,7 +8,6 @@ from contextlib import contextmanager
 import csv
 
 PRODUCTION = True
-GIMME_QUOTES_NUMBER = "6502295612"
 
 BAD_REQUEST = "Sorry... we did not understand the request. Acceptable requests: \
 'SUBSCRIBE K' - subscibe to a quote every K minutes, or 'UNSUBSCRIBE'."
