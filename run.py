@@ -10,7 +10,7 @@ import csv
 PRODUCTION = True
 
 BAD_REQUEST = "Sorry... we did not understand the request. Acceptable requests: \
-'SUBSCRIBE K' - subscibe to a quote every K minutes, or 'UNSUBSCRIBE'."
+'SUBSCRIBE K' - subscibe to a quote every K minutes, or 'TERMINATE' - to unsubscribe"
 NEW_SUBS_MSG = "Welcome to GimmeQuotes. Your subscription was successful. You will \
 receive a quote every %s minutes."
 CHANGE_FREQ_MSG = "Your subscription was modified. You will \
@@ -46,7 +46,7 @@ def read_incoming_sms():
     if msg == 'SUBSCRIBE':
         log_activity(number, msg, freq, body)
         return subscribe_user(number, msg, freq, body)
-    elif msg == 'UNSUBSCRIBE':
+    elif msg == 'TERMINATE':
         log_activity(number, msg, "-", body)
         return unsubscribe_user(number, msg, freq, body)
 
@@ -74,7 +74,7 @@ def get_status(users_data, number):
     status = users_data.get(number, {}).get('event_request', "???")
     status_map = {
         "SUBSCRIBE": "Subscribed",
-        "UNSUBSCRIBE": 'Unsubscribed',
+        "TERMINATE": 'Unsubscribed',
     }
     return status_map.get(status, '???')
 
@@ -111,8 +111,8 @@ def get_request_info(form):
                 freq = int(msg_body[1])
                 assert freq > 0
         elif len(msg_body) == 1:
-            if msg_body[0].upper() == "UNSUBSCRIBE":
-                msg = "UNSUBSCRIBE"
+            if msg_body[0].upper() == "TERMINATE":
+                msg = "TERMINATE"
                 freq = 60
     except:
         try:
@@ -238,9 +238,9 @@ stats_html_content = """
             <tr>
             <td style="width: 100%; border: None; font-size: 14px;"></td>
             <td style="white-space: nowrap; border: None; font-size: 14px;">
-                <p> send 'SUBSCRIBE 2' to 6502295612 to receive a quote every 2 minutes </p>
-                <p> To modify subscription, send 'SUBSCRIBE 5' to 6502295612 to receive a quote every 5 minutes </p>
-                <p> send 'UNSUBSCRIBE' to 6502295612 to unsubscribe </p>
+                <p> send 'Subscribe 2' to 6502295612 to receive a quote every 2 minutes </p>
+                <p> To modify subscription, send 'Subscribe 5' to 6502295612 to receive a quote every 5 minutes </p>
+                <p> send 'Terminate' to 6502295612 to unsubscribe </p>
              </td>
              </tr>
             </table>
@@ -284,11 +284,12 @@ def get_stats_result():
     for th in ["Phone Number", "Sub status", "Frequency", "# Messages"]:
         users_table += "    <th>%s</th>\n" % th
     users_table += "  </tr>\n"
-    for number, info in msgs_data.items():
+    for number, usr_info in users_data.items():
         users_table += "  <tr>\n"
         new_number = hide_number(number)
+        info = msgs_data.get(number, ['?']*3)
         for td in [new_number, get_status(users_data, number),
-                   users_data.get(number, {}).get('frequency', '???'), info[2]]:
+                   usr_info.get('frequency', '???'), info[2]]:
 
             users_table += "    <td>%s</td>\n" % td
         users_table += "  </tr>\n"

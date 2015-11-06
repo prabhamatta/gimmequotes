@@ -10,7 +10,7 @@ all_quotes = []
 NUM_QUOTES = 100000
 
 MAIN_LOOP_SLEEP_TIME = 2  # in seconds
-USER_FREQ_UNIT = 5  # in seconds
+USER_FREQ_UNIT = 60  # in seconds
 
 def is_time_to_send_message(t1, t2, freq):
     secs = freq * USER_FREQ_UNIT
