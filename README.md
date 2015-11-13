@@ -2,7 +2,7 @@
 ## An SMS App using Twilio's api to periodically send quotes to subscribers
 http://gimmequotes.info/
 
-Step1:
+Step1: Create Twilio account and get the basic info
 ------
 ##### Create ‘settings.py’ file with following info:
 ```
@@ -13,7 +13,7 @@ incoming_mesgs_url = "<incoming mesg url>"
 
 ```
 
-Step 2: How to run the app that handles subscription and unsubscription
+Step 2: Run the app that handles subscription and unsubscription
 ----------
 * create virtual env
 ```
@@ -42,7 +42,7 @@ python run.py
 nohup python run.py &
 ```
 
-Step 3:  How to run the app that handles periodic sending of quotes
+Step 3:  Run the app that handles periodic sending of quotes
 ---------
 * go to the folder and run
 ```
